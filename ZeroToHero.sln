@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroToHeroService", "ZeroToHeroService\ZeroToHeroService.csproj", "{954F52AF-D34C-4384-B9FD-C24C58674D1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroToHeroTests", "ZeroToHeroTests\ZeroToHeroTests.csproj", "{9EA43D4B-EEA9-4068-8F88-9099FE3E6B87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{954F52AF-D34C-4384-B9FD-C24C58674D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954F52AF-D34C-4384-B9FD-C24C58674D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954F52AF-D34C-4384-B9FD-C24C58674D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954F52AF-D34C-4384-B9FD-C24C58674D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA43D4B-EEA9-4068-8F88-9099FE3E6B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA43D4B-EEA9-4068-8F88-9099FE3E6B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA43D4B-EEA9-4068-8F88-9099FE3E6B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA43D4B-EEA9-4068-8F88-9099FE3E6B87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C5ACBDE-2F57-4A69-90FE-FB4D50516576}
+	EndGlobalSection
+EndGlobal
