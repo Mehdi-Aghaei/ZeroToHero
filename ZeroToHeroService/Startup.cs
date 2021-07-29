@@ -16,11 +16,9 @@ namespace ZeroToHeroService
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
+        public Startup(IConfiguration configuration) => 
             Configuration = configuration;
-        }
-
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,6 +26,7 @@ namespace ZeroToHeroService
         {
 
             services.AddControllers();
+            services.AddLogging();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ZeroToHeroService", Version = "v1" });
@@ -35,25 +34,21 @@ namespace ZeroToHeroService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder applicationBuilder, 
+            IWebHostEnvironment webHostEnviroment)
         {
-            if (env.IsDevelopment())
+            if (webHostEnviroment.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ZeroToHeroService v1"));
+                applicationBuilder.UseDeveloperExceptionPage();
+                applicationBuilder.UseSwagger();
+                applicationBuilder.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ZeroToHeroService v1"));
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            applicationBuilder.UseHttpsRedirection();
+            applicationBuilder.UseRouting();
+            applicationBuilder.UseAuthorization();
+            applicationBuilder.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

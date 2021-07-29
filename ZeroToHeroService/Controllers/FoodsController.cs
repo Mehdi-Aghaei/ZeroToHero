@@ -11,13 +11,13 @@ namespace ZeroToHeroService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FoodController : ControllerBase
+    public class FoodsController : ControllerBase
     {
     
-        private readonly ILogger<FoodController> _logger;
+        private readonly ILogger<FoodsController> _logger;
         private readonly IFoodService _foodService;
 
-        public FoodController(ILogger<FoodController> logger,IFoodService foodService)
+        public FoodsController(ILogger<FoodsController> logger,IFoodService foodService)
         {
             _foodService = foodService;
             _logger = logger;
