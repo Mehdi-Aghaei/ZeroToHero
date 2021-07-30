@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZeroToHeroService.Brokers;
+using ZeroToHeroService.Brokers.DateTimes;
 using ZeroToHeroService.Brokers.Loggings;
 using ZeroToHeroService.Brokers.Storages;
 
@@ -32,8 +33,8 @@ namespace ZeroToHeroService
             services.AddLogging();
             services.AddDbContext<StorageBroker>();
             services.AddScoped<IStorageBroker, StorageBroker>();
-            services.AddTransient<ILogger,Logger<LoggingBroker>>();
             services.AddTransient<ILoggingBroker, LoggingBroker>();
+            services.AddTransient<IDateTimeBroker, DateTimeBroker>();
      
             services.AddSwaggerGen(c =>
             {
