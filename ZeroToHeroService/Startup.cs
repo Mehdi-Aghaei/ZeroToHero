@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZeroToHeroService.Brokers;
+using ZeroToHeroService.Brokers.Loggings;
 using ZeroToHeroService.Brokers.Storages;
 
 namespace ZeroToHeroService
@@ -27,9 +29,12 @@ namespace ZeroToHeroService
         {
 
             services.AddControllers();
+            services.AddLogging();
             services.AddDbContext<StorageBroker>();
             services.AddScoped<IStorageBroker, StorageBroker>();
-            services.AddLogging();
+            services.AddTransient<ILogger,Logger<LoggingBroker>>();
+            services.AddTransient<ILoggingBroker, LoggingBroker>();
+     
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ZeroToHeroService", Version = "v1" });
