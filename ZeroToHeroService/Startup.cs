@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZeroToHeroService.Brokers.Storages;
 
 namespace ZeroToHeroService
 {
@@ -26,6 +27,8 @@ namespace ZeroToHeroService
         {
 
             services.AddControllers();
+            services.AddDbContext<StorageBroker>();
+            services.AddScoped<IStorageBroker, StorageBroker>();
             services.AddLogging();
             services.AddSwaggerGen(c =>
             {

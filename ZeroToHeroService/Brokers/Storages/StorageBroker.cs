@@ -1,7 +1,21 @@
+using Microsoft.Extensions.Configuration;
+using EFxceptions;
+using Microsoft.EntityFrameworkCore;
+
 namespace ZeroToHeroService.Brokers.Storages
 {
-    public class StorageBroker
+    public class StorageBroker:EFxceptionsContext,IStorageBroker
     {
-        
+        private readonly IConfiguration configuration;
+        public StorageBroker(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+            this.Database.Migrate();
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string connectionString = this.configuration.GetConnectionString("DefualtConnection");
+            optionsBuilder.UseSqlServer(connectionString);
+        }
     }
 }
