@@ -1,20 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ZeroToHeroService.Brokers;
 using ZeroToHeroService.Brokers.DateTimes;
 using ZeroToHeroService.Brokers.Loggings;
 using ZeroToHeroService.Brokers.Storages;
+using JsonStringEnumConverter = Newtonsoft.Json.Converters.StringEnumConverter;
 
 namespace ZeroToHeroService
 {
@@ -30,6 +25,7 @@ namespace ZeroToHeroService
         {
 
             services.AddControllers();
+            AddNewtonSoftJson(services);
             services.AddLogging();
             services.AddDbContext<StorageBroker>();
             services.AddScoped<IStorageBroker, StorageBroker>();
@@ -58,6 +54,15 @@ namespace ZeroToHeroService
             applicationBuilder.UseRouting();
             applicationBuilder.UseAuthorization();
             applicationBuilder.UseEndpoints(endpoints => endpoints.MapControllers());
+        }
+        private static void AddNewtonSoftJson(IServiceCollection services)
+        {
+            services.AddMvc().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.Converters.Add(new JsonStringEnumConverter());
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
         }
     }
 }

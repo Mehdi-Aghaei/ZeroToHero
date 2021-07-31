@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZeroToHeroService.Brokers.Storages
 {
-    public class StorageBroker:EFxceptionsContext,IStorageBroker
+    public partial class StorageBroker:EFxceptionsContext,IStorageBroker
     {
         private readonly IConfiguration configuration;
         public StorageBroker(IConfiguration configuration)
@@ -12,6 +12,12 @@ namespace ZeroToHeroService.Brokers.Storages
             this.configuration = configuration;
             this.Database.Migrate();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = this.configuration.GetConnectionString("DefualtConnection");
