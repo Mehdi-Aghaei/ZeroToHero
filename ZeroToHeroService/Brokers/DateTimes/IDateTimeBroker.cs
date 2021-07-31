@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ZeroToHeroService.Brokers.DateTimes
 {
-    interface IDateTimeBroker
+    public interface IDateTimeBroker
     {
         DateTimeOffset GetCurrentDateTime();
     }
