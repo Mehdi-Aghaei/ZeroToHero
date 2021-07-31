@@ -12,6 +12,7 @@ namespace ZeroToHeroService.Models.Rentals
 {
     public class Rental
     {
+        public Guid RentalId { get; set; }
         public DateTimeOffset RentalBegin{ get; set; }
         public DateTimeOffset RentalEnd{ get; set; }
         public decimal TotalCost { get; set; }

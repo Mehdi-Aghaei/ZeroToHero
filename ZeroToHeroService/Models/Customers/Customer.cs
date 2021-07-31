@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ZeroToHeroService.Models.Addresses;
+using ZeroToHeroService.Models.CustomerAddresses;
 using ZeroToHeroService.Models.CustomerRentals;
 using ZeroToHeroService.Models.Rentals;
 
@@ -18,7 +19,7 @@ namespace ZeroToHeroService.Models.Customers
         public Gender Gender { get; set; }
 
         [JsonIgnore]
-        public IEnumerable<Address> Addresses { get; set; }
+        public IEnumerable<CustomerAddress> CustomerAddresses { get; set; }
         [JsonIgnore]
         public IEnumerable<CustomerRental> CustomerRentals { get; set; }
 
