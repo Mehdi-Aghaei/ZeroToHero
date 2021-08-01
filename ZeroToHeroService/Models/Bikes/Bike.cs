@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using ZeroToHeroService.Models.BikeRentals;
 using ZeroToHeroService.Models.Rentals;
 
 namespace ZeroToHeroService.Models.Bikes
@@ -19,7 +16,7 @@ namespace ZeroToHeroService.Models.Bikes
         public Category Category { get; set; }
 
         [JsonIgnore] 
-        public IEnumerable<BikeRental> BikeRentals { get; set; }
+        public IEnumerable<Rental> BikeRentals { get; set; }
 
     }
 

@@ -16,11 +16,15 @@ namespace ZeroToHeroService.Brokers.Storages
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            AddCustomerAddressReferences(modelBuilder);
+            AddCustomerRentalsReferences(modelBuilder);
+            AddBikeRentalsReferences(modelBuilder);
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = this.configuration.GetConnectionString("DefualtConnection");
+            string connectionString = this.configuration.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
