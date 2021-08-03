@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZeroToHeroService.Brokers.Storages
 {
-    public partial class StorageBroker:EFxceptionsContext,IStorageBroker
+    public partial class StorageBroker: EFxceptionsContext, IStorageBroker
     {
         private readonly IConfiguration configuration;
         public StorageBroker(IConfiguration configuration)

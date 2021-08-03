@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +10,7 @@ using ZeroToHeroService.Brokers;
 using ZeroToHeroService.Brokers.DateTimes;
 using ZeroToHeroService.Brokers.Loggings;
 using ZeroToHeroService.Brokers.Storages;
+using ZeroToHeroService.Models.Users;
 using JsonStringEnumConverter = Newtonsoft.Json.Converters.StringEnumConverter;
 
 namespace ZeroToHeroService
@@ -31,7 +33,12 @@ namespace ZeroToHeroService
             services.AddScoped<IStorageBroker, StorageBroker>();
             services.AddTransient<ILoggingBroker, LoggingBroker>();
             services.AddTransient<IDateTimeBroker, DateTimeBroker>();
-     
+
+            services.AddIdentityCore<User>()
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<StorageBroker>()
+                .AddDefaultTokenProviders();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ZeroToHeroService", Version = "v1" });
